@@ -1,0 +1,197 @@
+@import "responsive";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial';
+    background-color: whitesmoke;
+}
+
+.main_container {
+    height: 100vh;
+    margin: 0 auto;
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+
+    h1 {
+        text-align: center;
+        font-size: 4em;
+        margin: 2.5vh auto;
+        width: 100%;
+
+        @include tablet{
+            font-size: 2.5em;
+        }
+
+    }
+
+    .flex_container{
+        display: flex;
+        width: 90vw;
+        justify-content: space-around;
+
+        @include tablet{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    //---------------------------------------- Left
+    .left {
+
+        width: 40vw;
+        height: 55vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        @include tablet{
+            margin-top: 5vh;
+            width: 90%;
+            height: 80vh;
+        }
+
+        @include phone{
+            height: 100vh;
+            margin-bottom: 5vh;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            font-weight: normal;
+
+            @include phone{
+                font-size: 2em;
+            }
+    
+        }
+
+        .images_container {
+            height: 80%;
+            position: relative;
+            width: 100%;
+
+            @include phone{
+                height: 100%;
+                margin: 5vh;
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+            img:nth-of-type(1){   
+                             object-position: center 10%;
+            }
+            
+            img[src="Images/to_change.jpg"] {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                outline: 0px solid rgba(255, 255, 255, 0.356);
+                transition: opacity 1s linear, filter .75s linear 1s, outline-offset .5s .5s;
+
+                &:hover {
+                    opacity: 1;
+                    filter: brightness(70%) contrast(125%);
+                    outline-color: white;
+                    outline-offset:-1vh;
+                    outline-width: 2px;
+                }
+            }
+        }
+    }
+
+    //------------------------------------ Right
+    .right {
+
+        width: 40vw;
+        height: 55vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        @include tablet{
+            margin: 5vh auto;
+            width: 90%;
+            height: 80vh;
+        }
+
+        @include phone{
+            margin: 0;
+            height: 100vh;
+        }
+       
+        h2 {
+            font-size: 2.5em;
+            font-weight: normal;
+
+            @include phone{
+                font-size: 2em;
+            }
+        }
+
+        .images_container {
+            height: 80%;
+            position: relative;
+            width: 100%;
+            overflow-y: hidden;
+
+            @include phone{
+                height: 100%;
+            }
+    
+
+            &:hover::after {
+                opacity: 0.8;
+                transform: translateY(0vh);
+                outline-offset:-1.5vh;
+                outline-width: 2px;                
+            }
+
+            &::after {
+                content: 'canyon';
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(247, 213, 133) 0%, rgb(231, 122, 189) 100.7%);
+                color: white;
+                text-transform: capitalize;
+                letter-spacing: 5px;
+                font-size: 1.5em;
+                opacity: 0;
+                transform: translateY(10vh);
+                outline: 0px solid white;
+                transition: opacity 1s, transform 1s,outline-offset 1s .75s;
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+
+        }
+
+    }
+
+}
